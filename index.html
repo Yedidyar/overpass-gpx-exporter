@@ -4,26 +4,135 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Overpass GPX Exporter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --background-color: #f4f6f7;
+        --text-color: #2c3e50;
+        --input-border-color: #bdc3c7;
+        --button-hover-color: #2980b9;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--background-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        line-height: 1.6;
+        color: var(--text-color);
+      }
+
+      .container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        width: 100%;
+        max-width: 500px;
+        margin: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      #exportForm {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      input {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 1px solid var(--input-border-color);
+        border-radius: 6px;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+      }
+
+      button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 14px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.1s ease;
+      }
+
+      button:hover {
+        background-color: var(--button-hover-color);
+      }
+
+      button:active {
+        transform: scale(0.98);
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+          margin: 10px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Overpass GPX Exporter</h1>
-    <form id="exportForm">
-      <label for="location">Enter Location:</label>
-      <input type="text" id="location" placeholder="e.g., Tel Aviv" required />
-      <br /><br />
-      <label for="category">Enter Category:</label>
-      <input type="text" id="category" placeholder="e.g., Shops" required />
-      <br /><br />
-      <label for="filter">Enter Overpass Filter:</label>
-      <input
-        type="text"
-        id="filter"
-        placeholder="e.g., shop or amenity~'restaurant|cafe'"
-        required
-      />
-      <br /><br />
-      <button type="submit">Export GPX</button>
-    </form>
+    <div class="container">
+      <h1>Overpass GPX Exporter</h1>
+      <form id="exportForm">
+        <label for="location">Enter Location:</label>
+        <input
+          type="text"
+          id="location"
+          placeholder="e.g., Tel Aviv"
+          required
+        />
+
+        <label for="category">Enter Category:</label>
+        <input type="text" id="category" placeholder="e.g., Shops" required />
+
+        <label for="filter">Enter Overpass Filter:</label>
+        <input
+          type="text"
+          id="filter"
+          placeholder="e.g., shop or amenity~'restaurant|cafe'"
+          required
+        />
+
+        <button type="submit">Export GPX</button>
+      </form>
+    </div>
+
     <script>
       document
         .getElementById("exportForm")
